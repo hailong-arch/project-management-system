@@ -75,7 +75,7 @@ public class ProjectService {
 
         // 5. Store the image in s3 and update database (projectProfileImageLink) with s3 image link
         String path = String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), target.getId());
-        String filename = String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
+        String filename = String.format("%s-%s", file.getOriginalFilename(), target.getId());
 
         try {
             fileStore.save(path, filename, Optional.of(metadata), file.getInputStream());
